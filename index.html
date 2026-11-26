@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kisi-Kisi Informatika Kelas VIII - SMPN 1 Sukowono</title>
+<style>
+  :root {
+    --primary: #1e40af;
+    --primary-light: #eff6ff;
+    --secondary: #0f172a;
+    --accent: #0284c7;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 16px;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* Header Card */
+  .header-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #ffffff;
+    padding: 28px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .school-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header-card h1 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .header-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  /* Info Grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 600px) {
+    .info-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .info-item {
+    background: var(--card-bg);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .info-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-top: 2px;
+  }
+
+  /* Controls (Search & Filter) */
+  .controls {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    position: sticky;
+    top: 10px;
+    z-index: 10;
+  }
+
+  .search-box {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-box:focus {
+    border-color: var(--accent);
+  }
+
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-main);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+
+  /* Kisi-kisi Cards (Responsive Grid for Desktop & Single Column for Mobile) */
+  .kisi-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .kisi-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .kisi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .kisi-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+
+  .soal-number {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .bab-badge {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .bab-2 { background: #dcfce7; color: #166534; }
+  .bab-3 { background: #fef3c7; color: #92400e; }
+  .bab-4 { background: #e0e7ff; color: #3730a3; }
+
+  .materi-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--secondary);
+    margin-bottom: 6px;
+  }
+
+  .indikator-text {
+    font-size: 0.92rem;
+    color: var(--text-main);
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 28px;
+    padding: 16px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .no-result {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-muted);
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px dashed var(--border);
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div class="header-card">
+    <div class="school-badge">SMPN 1 SUKOWONO</div>
+    <h1>KISI-KISI PENULISAN SOAL INFORMATIKA</h1>
+    <p>Kelas VIII / Semester Ganjil • Materi Pokok Bab 2, 3, dan 4</p>
+  </div>
+
+  <!-- Info Ringkas -->
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">Mata Pelajaran</div>
+      <div class="info-value">Informatika</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Kelas / Smt</div>
+      <div class="info-value">VIII / Ganjil</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Jumlah Soal</div>
+      <div class="info-value">50 Soal</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Bentuk Soal</div>
+      <div class="info-value">Pilihan Ganda</div>
+    </div>
+  </div>
+
+  <!-- Pencarian & Filter -->
+  <div class="controls">
+    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Cari materi atau kata kunci (misal: biner, shortcut, CPU)...">
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterBab('all', this)">Semua (50)</button>
+      <button class="filter-btn" onclick="filterBab('Bab 2', this)">Bab 2 (1–10)</button>
+      <button class="filter-btn" onclick="filterBab('Bab 3', this)">Bab 3 (11–40)</button>
+      <button class="filter-btn" onclick="filterBab('Bab 4', this)">Bab 4 (41–50)</button>
+    </div>
+  </div>
+
+  <!-- Daftar Kisi-Kisi -->
+  <div id="kisiContainer" class="kisi-list"></div>
+  <div id="noResult" class="no-result">Materi atau kata kunci yang dicari tidak ditemukan.</div>
+
+  <div class="footer-note">
+    Selamat Belajar & Semoga Sukses! • SMPN 1 Sukowono
+  </div>
+</div>
+
+<script>
+  const dataKisi = [
+    { no: 1, bab: "Bab 2", materi: "Fungsi", indikator: "Disajikan ilustrasi mengenai teks lagu, peserta didik dapat mengidentifikasi fungsi dari sebuah kata kunci (refren) untuk menghindari pengulangan instruksi." },
+    { no: 2, bab: "Bab 2", materi: "Himpunan", indikator: "Disajikan data kesukaan buah dari dua orang anak, peserta didik dapat menentukan hasil irisan dari dua himpunan tersebut." },
+    { no: 3, bab: "Bab 2", materi: "Sistem Bilangan", indikator: "Peserta didik dapat mengidentifikasi dan menyebutkan sistem bilangan yang menggunakan basis 8 (oktal)." },
+    { no: 4, bab: "Bab 2", materi: "Sistem Bilangan", indikator: "Disajikan sebuah bilangan desimal, peserta didik dapat menentukan nama nilai tempat/posisi dari salah satu digit pada bilangan tersebut." },
+    { no: 5, bab: "Bab 2", materi: "Sistem Bilangan", indikator: "Peserta didik dapat menyebutkan batas bilangan paling besar (maksimal) untuk satu digit pada sistem bilangan biner." },
+    { no: 6, bab: "Bab 2", materi: "Algoritma & Sistem Bilangan", indikator: "Peserta didik dapat memahami dan mengidentifikasi langkah algoritmik operasional pembagian berulang untuk mengonversi bilangan desimal menjadi biner." },
+    { no: 7, bab: "Bab 2", materi: "Sistem Bilangan", indikator: "Disajikan sebuah bilangan biner sederhana, peserta didik dapat menghitung hasil konversi bilangan tersebut menjadi bilangan desimal." },
+    { no: 8, bab: "Bab 2", materi: "Algoritma", indikator: "Disajikan deskripsi singkat mengenai instruksi masuk (M) dan keluar (K) pada algoritma mesin sulam, peserta didik dapat memaknai urutan instruksi tersebut dengan benar." },
+    { no: 9, bab: "Bab 2", materi: "Algoritma", indikator: "Disajikan aturan alat pada Mesin Pembentuk Adonan, peserta didik dapat memprediksi hasil akhir adonan (output) jika diberikan bentuk adonan (input) yang tidak sesuai dengan instruksi alat." },
+    { no: 10, bab: "Bab 2", materi: "Struktur Data", indikator: "Peserta didik dapat menyebutkan istilah komputasi untuk konsep struktur data berupa tumpukan (stack) yang sering digunakan dalam operasi perhitungan matematika." },
+    { no: 11, bab: "Bab 3", materi: "Perangkat Lunak Aplikasi", indikator: "Siswa dapat mendefinisikan arti perangkat lunak aplikasi perkantoran." },
+    { no: 12, bab: "Bab 3", materi: "Perangkat Lunak Aplikasi", indikator: "Siswa dapat mengidentifikasi format ekstensi file pengolah kata." },
+    { no: 13, bab: "Bab 3", materi: "Perangkat Lunak Aplikasi", indikator: "Siswa dapat mengidentifikasi format ekstensi gambar berbasis vektor." },
+    { no: 14, bab: "Bab 3", materi: "Antarmuka Aplikasi", indikator: "Siswa dapat menyebutkan istilah antarmuka berbasis grafis (GUI)." },
+    { no: 15, bab: "Bab 3", materi: "Fitur Cut, Copy, Paste", indikator: "Siswa dapat memahami konsep clipboard atau buffer memori." },
+    { no: 16, bab: "Bab 3", materi: "Fitur Cut, Copy, Paste", indikator: "Siswa dapat menyebutkan tombol shortcut keyboard untuk Copy." },
+    { no: 17, bab: "Bab 3", materi: "Fitur Cut, Copy, Paste", indikator: "Siswa dapat memahami asal usul sejarah fitur cut, copy, paste." },
+    { no: 18, bab: "Bab 3", materi: "Screen Shot / Snipping", indikator: "Siswa dapat menyebutkan nama perkakas pemotong layar sebagian (Snipping Tool)." },
+    { no: 19, bab: "Bab 3", materi: "Screen Shot / Snipping", indikator: "Siswa mengetahui shortcut untuk mengaktifkan Snipping Tool di Windows." },
+    { no: 20, bab: "Bab 3", materi: "Objek Pengolah Kata", indikator: "Siswa dapat mengurutkan hierarki objek aplikasi pengolah kata." },
+    { no: 21, bab: "Bab 3", materi: "Objek Pengolah Kata", indikator: "Siswa dapat mengidentifikasi fungsi Header pada dokumen." },
+    { no: 22, bab: "Bab 3", materi: "Objek Pengolah Kata", indikator: "Siswa dapat menyebutkan menu untuk mengubah orientasi halaman." },
+    { no: 23, bab: "Bab 3", materi: "Objek Pengolah Kata", indikator: "Siswa dapat mengidentifikasi ciri-ciri format Paragraf." },
+    { no: 24, bab: "Bab 3", materi: "Objek Pengolah Kata", indikator: "Siswa memahami struktur tabel yang terbentuk dari baris dan kolom." },
+    { no: 25, bab: "Bab 3", materi: "Konversi Format", indikator: "Siswa memahami keuntungan format file PDF." },
+    { no: 26, bab: "Bab 3", materi: "Merangkum Narasi", indikator: "Siswa dapat mendefinisikan istilah Multimedia." },
+    { no: 27, bab: "Bab 3", materi: "Buku Digital", indikator: "Siswa dapat mengidentifikasi format penyimpan buku digital." },
+    { no: 28, bab: "Bab 3", materi: "Buku Digital", indikator: "Siswa dapat mengetahui fitur unggulan dalam buku digital (Search)." },
+    { no: 29, bab: "Bab 3", materi: "Laboratorium Maya", indikator: "Siswa memahami sejarah pengembangan lab maya pertama." },
+    { no: 30, bab: "Bab 3", materi: "Laboratorium Maya", indikator: "Siswa dapat membedakan kelebihan lab maya dengan lab fisik." },
+    { no: 31, bab: "Bab 3", materi: "Laboratorium Maya", indikator: "Siswa dapat menyebutkan nama lab maya untuk sains dasar (Phet)." },
+    { no: 32, bab: "Bab 3", materi: "Laboratorium Maya", indikator: "Siswa dapat menyebutkan nama lab maya yang memakai mini-game (NOVA Labs)." },
+    { no: 33, bab: "Bab 3", materi: "Laboratorium Maya", indikator: "Siswa mengetahui modul spesifik pada Concord Consortium." },
+    { no: 34, bab: "Bab 3", materi: "Laboratorium Maya", indikator: "Siswa mengetahui situs lab maya resmi milik Kemdikbud RI." },
+    { no: 35, bab: "Bab 3", materi: "Fitur Paste", indikator: "Siswa mengetahui penggunaan Paste (Keep Text Only) untuk menghilangkan format asal." },
+    { no: 36, bab: "Bab 3", materi: "Antarmuka Aplikasi", indikator: "Siswa mengetahui ikon dasar perintah Cut." },
+    { no: 37, bab: "Bab 3", materi: "Aplikasi Perkantoran", indikator: "Siswa mengetahui perbedaan utama penggunaan pengolah lembar kerja." },
+    { no: 38, bab: "Bab 3", materi: "Aplikasi Perkantoran", indikator: "Siswa dapat mengidentifikasi ekstensi file pengolah presentasi." },
+    { no: 39, bab: "Bab 3", materi: "Objek Pengolah Kata", indikator: "Siswa dapat mengidentifikasi atribut atau ciri objek karakter." },
+    { no: 40, bab: "Bab 3", materi: "Screen Shot / Snipping", indikator: "Siswa mengetahui tombol bawaan Print Screen (PrtScr)." },
+    { no: 41, bab: "Bab 4", materi: "Komponen Sistem Komputer", indikator: "Peserta didik dapat menentukan kategori perangkat keras (output) dari sebuah ilustrasi perangkat aktuator pada robot." },
+    { no: 42, bab: "Bab 4", materi: "Pemrosesan (CPU)", indikator: "Peserta didik dapat mengidentifikasi fungsi Register sebagai salah satu bagian prosesor penyimpan data sementara berkecepatan tinggi." },
+    { no: 43, bab: "Bab 4", materi: "Perangkat Lunak (Sistem Operasi)", indikator: "Peserta didik dapat memahami definisi dan fungsi utama Sistem Operasi dalam manajemen sumber daya komputer." },
+    { no: 44, bab: "Bab 4", materi: "Perangkat Lunak Pemrograman", indikator: "Peserta didik dapat memberikan contoh jenis aplikasi/perangkat lunak pemrograman untuk menulis kode sumber." },
+    { no: 45, bab: "Bab 4", materi: "Sistem Heksadesimal", indikator: "Peserta didik dapat menyebutkan nilai desimal dari simbol abjad tertentu pada sistem bilangan heksadesimal." },
+    { no: 46, bab: "Bab 4", materi: "Konversi Bilangan", indikator: "Peserta didik dapat menghitung hasil konversi dari bilangan biner menjadi bilangan heksadesimal." },
+    { no: 47, bab: "Bab 4", materi: "Konversi Bilangan", indikator: "Peserta didik dapat menghitung hasil konversi dari bilangan desimal menjadi bilangan heksadesimal." },
+    { no: 48, bab: "Bab 4", materi: "Konversi Bilangan", indikator: "Peserta didik dapat menghitung hasil konversi dari bilangan heksadesimal menjadi bilangan biner." },
+    { no: 49, bab: "Bab 4", materi: "Pengalamatan Memori", indikator: "Peserta didik dapat mengidentifikasi istilah alamat segmen dan alamat offset dari format memori heksadesimal dua angka." },
+    { no: 50, bab: "Bab 4", materi: "Pengalamatan Memori", indikator: "Peserta didik dapat menentukan letak alamat fisik berdasarkan hasil penjumlahan alamat segmen dan offset." }
+  ];
+
+  let currentBab = 'all';
+
+  function renderCards() {
+    const container = document.getElementById('kisiContainer');
+    const noResult = document.getElementById('noResult');
+    const keyword = document.getElementById('searchInput').value.toLowerCase();
+
+    container.innerHTML = '';
+
+    const filtered = dataKisi.filter(item => {
+      const matchBab = currentBab === 'all' || item.bab === currentBab;
+      const matchText = item.materi.toLowerCase().includes(keyword) || 
+                        item.indikator.toLowerCase().includes(keyword) ||
+                        item.no.toString() === keyword;
+      return matchBab && matchText;
+    });
+
+    if (filtered.length === 0) {
+      noResult.style.display = 'block';
+    } else {
+      noResult.style.display = 'none';
+      filtered.forEach(item => {
+        const babClass = item.bab === 'Bab 2' ? 'bab-2' : (item.bab === 'Bab 3' ? 'bab-3' : 'bab-4');
+        const card = document.createElement('div');
+        card.className = 'kisi-card';
+        card.innerHTML = `
+          <div>
+            <div class="kisi-card-header">
+              <span class="soal-number">Soal No. ${item.no}</span>
+              <span class="bab-badge ${babClass}">${item.bab} • Pilihan Ganda</span>
+            </div>
+            <div class="materi-title">${item.materi}</div>
+          </div>
+          <div class="indikator-text">${item.indikator}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+  }
+
+  function filterBab(bab, btn) {
+    currentBab = bab;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCards();
+  }
+
+  document.getElementById('searchInput').addEventListener('input', renderCards);
+
+  renderCards();
+</script>
+
+</body>
+</html>
